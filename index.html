@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Inventory</title>
+</head>
+<body>
+    <h1>Grocery Inventory</h1>
+    
+    <form method="POST" action="/add">
+        <label for="name">Grocery Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required>
+        
+        <label for="price">Price per unit:</label>
+        <input type="number" step="0.01" id="price" name="price" required>
+        
+        <label for="gst">GST %:</label>
+        <input type="number" step="0.01" id="gst" name="gst" value="18" required>
+        
+        <button type="submit">Add Grocery</button>
+    </form>
+
+    <h2>Inventory List</h2>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total Price with GST</th>
+        </tr>
+        {% for grocery in groceries %}
+        <tr>
+            <td>{{ grocery.name }}</td>
+            <td>{{ grocery.quantity }}</td>
+            <td>{{ grocery.price }}</td>
+            <td>{{ grocery.total_price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
